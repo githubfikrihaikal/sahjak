@@ -6,7 +6,7 @@
                     <div class="login-box">
                         <div class="login-header">
                             <h3>Log In</h3>
-                            <p>Welcome back! Please login to continue.</p>
+                            <p>Welcome back, Please login to continue.</p>
                             <div class="divider"></div>
                         </div>
                         <div class="login-body">
