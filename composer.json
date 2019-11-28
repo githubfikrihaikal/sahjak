@@ -13,7 +13,8 @@
 	"require": {
 		"php": ">=5.3.7",
 		"geckob/firebase": "^1.0",
-		"kreait/firebase-php": "4.35"
+		"kreait/firebase-php": "4.35",
+		"ext-memcached": "*"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
