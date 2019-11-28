@@ -346,9 +346,10 @@ $config['encryption_key'] = '';
 |	The number of SECONDS you want the session to last.
 |	Setting to 0 (zero) means expire when the browser is closed.
 |
-| 'sess_save_path'
-|
-|	The location to save sessions to, driver dependent.
+*/
+// $config['sess_save_path'] = sys_get_temp_dir();
+
+/*|	The location to save sessions to, driver dependent.
 |
 |	For the 'files' driver, it's a path to a writable directory.
 |	WARNING: Only absolute paths are supported!
@@ -382,7 +383,7 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
+$config['sess_save_path'] = sys_get_temp_dir();
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
