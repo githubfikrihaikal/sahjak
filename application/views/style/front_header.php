@@ -19,7 +19,12 @@ $asset = base_url() . "assets/front/"; ?>
         .antrian {
             text-align: center;
         }
+        html, 
+        body {
+            height: 100%;
+            background-color:white;
+        }
     </style>
 </head>
 
-<body style="font-size: 30px;background-color:lightseagreen;">
+<body style="font-size: 30px;">
