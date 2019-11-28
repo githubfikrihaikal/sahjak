@@ -43,7 +43,7 @@ function read() {
 			content +=
 				'<td align="center"> '+
 				' <button type="button" class="btn btn-danger delete" data-key="' + key +'">Delete</button> '+
-				' <button type="button" class="btn btn-info detail" data-key="' + key +'">Detail</button>'+
+				' <button type="button" class="btn btn-info detail" data-key="' + key +'" data-name="'+ val.nama +'">Detail</button>'+
 				' <button type="button" class="btn btn-primary setpj" data-key="' + key +'">Set PJ</button> </td>',
 			content += "</tr>";
 		});
@@ -70,7 +70,8 @@ function readpj(){
 function getdetail(e) {
 	console.log(e);
 	var id = e.target.getAttribute("data-key");
-	location.href = "detail_layanan/" + id;
+	var nama = e.target.getAttribute("data-name")
+	location.href = "detail_layanan/" + id + "?n="+nama;
 }
 
 function godelete(e){
@@ -147,7 +148,6 @@ async function goTambah() {
 		html:
 			'<input autocomplete="off" name="hidden" type="text" style="display:none;">' +
 			'<input id="swal-input1" class="swal2-input pegawai-input" data-key="nama" placeholder="Nama KPP" autocomplete="off">',
-		//   '<input id="swal-input1" class="swal2-input pegawai-input" data-key="role" placeholder="Role" autocomplete="off">',
 		focusConfirm: false,
 		showCancelButton: true,
 		preConfirm: () => {

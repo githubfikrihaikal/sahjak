@@ -8,6 +8,13 @@ class Antrian extends CI_Controller{
   {
     parent::__construct();
     $this->data['asset'] = base_url()."assets/front/";
+    if (isset($_POST['userid'])) {
+      $_SESSION['loggedin'] = $_POST;
+    } else if (isset($_SESSION['loggedin'])) {
+      true;
+    } else {
+      redirect('login', 'refresh');
+    }
   }
 
   function index()

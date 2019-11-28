@@ -133,24 +133,22 @@
                                   <nav aria-label="breadcrumb">
                                       <ol class="breadcrumb breadcrumb-style-1">
                                           <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                          <li class="breadcrumb-item active" aria-current="page">Daftar Loket Layanan</li>
+                                          <li class="breadcrumb-item active" aria-current="page">Data Manajer</li>
                                       </ol>
                                   </nav>
-                                  <h1 class="page-title">Daftar Loket <?php echo $_GET['n']?></h1>
+                                  <h1 class="page-title">Data Manajer</h1>
                               </div>
                               <div class="row">
                                   <div class="col-xl">
                                       <div class="card">
                                           <div class="card-body">
-                                              <button type="button" class="btn btn-success float-right" style="margin-bottom:1px" onclick="goTambah()">+Tambah</button>
+                                              <button type="button" class="btn btn-success float-right" onclick="goTambah()" style="margin-bottom:1px">+Tambah</button>
                                               <table class="table table-striped" id="tabel">
                                                   <thead class="thead-dark">
                                                       <tr>
                                                           <th scope="col">#</th>
-                                                          <th scope="col">ID Antrian</th>
                                                           <th scope="col">Nama</th>
-                                                          <th scope="col">Total Antrian</th>
-                                                          <th scope="col">Antrian Sekarang</th>
+                                                          <th scope="col">Password</th>
                                                           <th scope="col">Action</th>
                                                       </tr>
                                                   </thead>
@@ -175,5 +173,4 @@
               <script src="<?= $asset ?>firebase/crypto-js/crypto-js.js"></script>
               <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
               <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-database.js"></script>
-              <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-              <script type="text/javascript" src="<?= $asset ?>firebase/detail_layanan.js"></script>
+              <script type="text/javascript" src="<?= $asset ?>firebase/manajer.js"></script>

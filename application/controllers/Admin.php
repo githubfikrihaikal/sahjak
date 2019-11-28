@@ -33,6 +33,13 @@ class Admin extends CI_Controller
     $this->load->view('style/admin_footer', $this->data);
   }
 
+  function manajer()
+  {
+    $this->load->view('style/admin_header', $this->data);
+    $this->load->view('admin/manajer', $this->data);
+    $this->load->view('style/admin_footer', $this->data);
+  }
+
   function layanan()
   {
     $this->load->view('style/admin_header', $this->data);
