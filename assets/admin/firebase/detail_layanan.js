@@ -21,6 +21,7 @@ const usersRef = dbRef.child("lokasi/" + id + "/layanan");
 var red = true;
 if (red == true) {
 	read();
+	readpj();
 }
 
 function read() {
@@ -47,7 +48,9 @@ function read() {
 				key +
 				'">Recall</button> <button type="button" class="btn btn-primary recallto" data-key="' +
 				key +
-				'">Recall To</button> </td>';
+				'">Recall To</button> <button type="button" class="btn btn-warning setpj" data-key="' +
+				key +
+				'">Atur PJ</button> </td>';
 			content += "</tr>";
 		});
 		document.getElementById("tablebody").innerHTML = "";
@@ -56,7 +59,69 @@ function read() {
 		$(".skip").on("click", goSkip);
 		$(".recall").on("click", goRecall);
 		$(".recallto").on("click", goRecallTo);
+		$(".setpj").on("click", setpj);
 	});
+}
+function readpj(){
+	const usersRef = dbRef.child("webusers");
+	usersRef.on("value", snap => {
+		snap.forEach(childSnap => {
+			let key = childSnap.key,
+				val = childSnap.val();
+			if(val.role == 'pegawai'){
+				pjdata[key] = val.username;
+			}
+		});
+	});
+}
+
+async function setpj(e){
+	const { value: fruit } = await Swal.fire({
+		title: 'Pilih PJ',
+		input: 'select',
+		inputOptions: pjdata,
+		inputPlaceholder: 'Pilih PJ',
+		showCancelButton: true,
+		inputValidator: (value) => {
+		  return new Promise((resolve) => {
+			if(value == ''){
+				resolve('pilih salah satu');
+			}else{
+				resolve()
+
+			}
+		  })
+		}
+	  })
+	  
+	  if (fruit) {
+		var userID = e.target.getAttribute("data-key");
+		console.log(id);
+		var namaloket;
+		const userRef = dbRef.child("webusers/" + fruit);
+		const userRef2 = dbRef.child("lokasi/" + id + "/layanan/"+userID);
+		userRef2.on("value", snap => {
+			namaloket = snap.val().nama;
+		});
+		newPegawai = {};
+		newPegawai['namaloket'] = namaloket;
+		userRef.update(newPegawai);
+
+		newPegawai2 = {};
+		userRef.on("value", snap => {
+			snap.forEach(childSnap => {
+				let key = childSnap.key,
+					val = childSnap.val();
+				if(key == 'username'){
+					newPegawai2['pj'] = val;
+				}
+			});
+		});
+
+		//const userRef2 = dbRef.child("lokasi/" + userID);
+		userRef2.update(newPegawai2);
+		read();
+	  }
 }
 
 function goSkip(e) {

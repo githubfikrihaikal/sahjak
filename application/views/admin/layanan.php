@@ -32,7 +32,6 @@
                                                       <tr>
                                                           <th scope="col">#</th>
                                                           <th scope="col" class="text-center">Nama</th>
-                                                          <th scope="col" class="text-center">PJ</th>
                                                           <th scope="col" class="text-center">Action</th>
                                                       </tr>
                                                   </thead>

@@ -39,18 +39,18 @@ function read() {
 				val.pj = 'Masih belum diset'
 			}
 			content += '<td align="center">' + val.nama + "</td>";
-			content += '<td align="center">' + val.pj + "</td>";
+			// content += '<td align="center">' + val.pj + "</td>";
 			content +=
 				'<td align="center"> '+
 				' <button type="button" class="btn btn-danger delete" data-key="' + key +'">Delete</button> '+
-				' <button type="button" class="btn btn-info detail" data-key="' + key +'" data-name="'+ val.nama +'">Detail</button>'+
-				' <button type="button" class="btn btn-primary setpj" data-key="' + key +'">Set PJ</button> </td>',
+				' <button type="button" class="btn btn-info detail" data-key="' + key +'" data-name="'+ val.nama +'">Detail</button>',
+				// ' <button type="button" class="btn btn-primary setpj" data-key="' + key +'">Set PJ</button> </td>',
 			content += "</tr>";
 		});
 		$("#tabel").append(content);
 		$(".detail").on("click", getdetail);
 		$(".delete").on("click", godelete);
-		$(".setpj").on("click", setpj);
+		// $(".setpj").on("click", setpj);
 	});
 }
 
@@ -117,10 +117,14 @@ async function setpj(e){
 	  
 	  if (fruit) {
 		var userID = e.target.getAttribute("data-key");
-		console.log(fruit);
+		var namaloket;
 		const userRef = dbRef.child("webusers/" + fruit);
+		const userRef2 = dbRef.child("lokasi/" + userID);
+		userRef2.on("value", snap => {
+			namaloket = snap.val().nama;
+		});
 		newPegawai = {};
-		newPegawai['kodepj'] = userID;
+		newPegawai['namaloket'] = namaloket;
 		userRef.update(newPegawai);
 
 		newPegawai2 = {};
@@ -134,7 +138,7 @@ async function setpj(e){
 			});
 		});
 
-		const userRef2 = dbRef.child("lokasi/" + userID);
+		//const userRef2 = dbRef.child("lokasi/" + userID);
 		userRef2.update(newPegawai2);
 		read();
 	  }

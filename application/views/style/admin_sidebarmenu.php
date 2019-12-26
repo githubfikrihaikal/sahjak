@@ -35,6 +35,11 @@
                     <i class="menu-icon icon-bell"></i><span>Daftar Antrian</span>
                 </a>
             </li>
+            <li class="active-page">
+                <a href="<?= site_url('mesin') ?>">
+                    <i class="menu-icon icon-bell"></i><span>Tampilan Mesin</span>
+                </a>
+            </li>
 
         </ul>
     </div>

@@ -148,7 +148,7 @@
                                                       <tr>
                                                           <th scope="col">#</th>
                                                           <th scope="col">Nama</th>
-                                                          <th scope="col">Kode PJ</th>
+                                                          <th scope="col">Nama Loket</th>
                                                           <th scope="col">Action</th>
                                                       </tr>
                                                   </thead>

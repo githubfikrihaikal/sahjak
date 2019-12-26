@@ -35,7 +35,7 @@ function readkaryawan() {
 				content += "<td>" + no + "</td>";
 				no++;
 				content += "<td>" + val.username + "</td>";
-				content += "<td>" + val.kodepj + "</td>";
+				content += "<td>" + val.namaloket + "</td>";
 				content +=
 					'<td> <button type="button" class="btn btn-danger delete" data-key="' + key +'">Delete</button>' +
 					' <button type="button" class="btn btn-info edit" data-key="' + key + '">Edit</button> </td>';
