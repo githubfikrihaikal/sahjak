@@ -4,14 +4,16 @@
             <div class="col-lg-12" style="background-color:white;">
                 <div class="row" style="background-image: url('<?php echo $asset ?>/images/navbar.jpg');   background-repeat: no-repeat; background-size: 100% 100%; border-radius:5px">
                     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <img src="<?= $asset ?>/images/logodjp.png" class="img-responsive" alt="Image" style="  max-width: 30%; height: auto;  ">
+                        <img src="<?= $asset ?>/images/logodjp.png" class="img-responsive" alt="Image" 
+                        style="  max-width: 30%; height: auto;  ">
                     </div>
                     <!-- <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="  margin: auto;">
                         <h1><b>KPP PRATAMA BANYUWANGI</b></h1>
                     </div> -->
 
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                        <img src="<?= $asset ?>/images/logosahjak.png" class="img-responsive" alt="Image" style="  max-width: 30%; height: auto; float:right;margin:10px;">
+                        <img src="<?= $asset ?>/images/logosahjak.png" class="img-responsive" alt="Image" 
+                        style="  max-width: 30%; height: auto; float:right;margin:10px;">
                     </div>
 
 
