@@ -35,7 +35,14 @@ function readkaryawan() {
 				content += "<td>" + no + "</td>";
 				no++;
 				content += "<td>" + val.username + "</td>";
-				content += "<td>" + val.namaloket + "</td>";
+				console.log(val.namaloket)
+				if(val.namaloket==undefined){
+					content += "<td> Masih Belum Memiliki Loket </td>";
+				}else{
+					content += "<td>" + val.namaloket + "</td>";
+
+
+				}
 				content +=
 					'<td> <button type="button" class="btn btn-danger delete" data-key="' + key +'">Delete</button>' +
 					' <button type="button" class="btn btn-info edit" data-key="' + key + '">Edit</button> </td>';

@@ -56,6 +56,22 @@ class Admin extends CI_Controller
     }
     $this->load->view('style/admin_footer', $this->data);
   }
+  function loket()
+  {
+    $this->load->view('style/admin_header', $this->data);
+    if($_SESSION['loggedin']['role'] == 'pegawai'){
+      if($_SESSION['loggedin']['kodepj'] == '0'){
+        echo "<script>alert('anda belum di set menjadi pj')</script>"; 
+        redirect('admin', 'refresh');
+       }else{
+         redirect('admin/detail_layanan/'.$_SESSION['loggedin']['kodepj'], 'refresh');
+//         $this->load->view('admin/detail_layanan/'.$_SESSION['loggedin']['kodepj'], $this->data);
+       }
+    }else{
+      $this->load->view('admin/loket', $this->data);
+    }
+    $this->load->view('style/admin_footer', $this->data);
+  }
 
   function detail_layanan()
   {

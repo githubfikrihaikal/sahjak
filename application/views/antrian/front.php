@@ -21,7 +21,7 @@
 
                         <div class="row">
                             <div class="col-md-12 antrian">
-                                <span style="background-color:lightgray; vertical-align:middle; font-weight:bold; font-size:60px;">
+                                <span style="background-color:white; vertical-align:middle; font-weight:bold; font-size:60px;">
                                     A-1</span>
                                 <span style="background-color:WHITE; vertical-align:middle; font-size:30px; font-weight:bold;  margin-left:30px">
                                     LOKET 06
@@ -52,28 +52,28 @@
                 <div class="col-lg-12 antrian" style=" height:80px; ">
                     <span style="background-color:WHITE;  vertical-align:middle; font-weight:bold; font-size:60px;">
                         A-1</span>
-                    <span style="background-color:lightgray;vertical-align:middle; font-size:40px; font-weight:bold;  margin-left:30px">
+                    <span style="background-color:white;vertical-align:middle; font-size:40px; font-weight:bold;  margin-left:30px">
                         LOKET 06
                     </span>
                 </div>
                 <div class="col-lg-12 antrian" style=" height:80px; ">
                     <span style="background-color:WHITE;  vertical-align:middle; font-weight:bold; font-size:60px;">
                         A-1</span>
-                    <span style="background-color:lightgray; vertical-align:middle; font-size:40px; font-weight:bold;  margin-left:30px">
+                    <span style="background-color:white; vertical-align:middle; font-size:40px; font-weight:bold;  margin-left:30px">
                         LOKET 06
                     </span>
                 </div>
                 <div class="col-lg-12 antrian" style=" height:80px; ">
                     <span style="background-color:WHITE;  vertical-align:middle; font-weight:bold; font-size:60px;">
                         A-1</span>
-                    <span style="background-color:lightgray; vertical-align:middle; font-size:40px; font-weight:bold;  margin-left:30px">
+                    <span style="background-color:white; vertical-align:middle; font-size:40px; font-weight:bold;  margin-left:30px">
                         LOKET 06
                     </span>
                 </div>
                 <div class="col-lg-12 antrian" style=" height:80px; ">
                     <span style="background-color:WHITE;  vertical-align:middle; font-weight:bold; font-size:60px;">
                         A-1</span>
-                    <span style="background-color:lightgray; vertical-align:middle; font-size:40px; font-weight:bold;  margin-left:30px">
+                    <span style="background-color:white; vertical-align:middle; font-size:40px; font-weight:bold;  margin-left:30px">
                         LOKET 06
                     </span>
                 </div>

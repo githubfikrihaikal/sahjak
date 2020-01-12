@@ -133,10 +133,10 @@
                                   <nav aria-label="breadcrumb">
                                       <ol class="breadcrumb breadcrumb-style-1">
                                           <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                          <li class="breadcrumb-item active" aria-current="page">Daftar Loket Layanan</li>
+                                          <li class="breadcrumb-item active" aria-current="page">Daftar Layanan</li>
                                       </ol>
                                   </nav>
-                                  <h1 class="page-title">Daftar Loket <?php echo $_GET['n']?></h1>
+                                  <h1 class="page-title">Daftar Layanan</h1>
                               </div>
                               <div class="row">
                                   <div class="col-xl">
@@ -149,7 +149,7 @@
                                                           <th scope="col">#</th>
                                                           <th scope="col">ID Antrian</th>
                                                           <th scope="col">Nama</th>
-                                                          <th scope="col">Total Antrian</th>
+                                                          <!-- <th scope="col">Total Antrian</th> -->
                                                           <th scope="col">Antrian Sekarang</th>
                                                           <th scope="col">Action</th>
                                                       </tr>

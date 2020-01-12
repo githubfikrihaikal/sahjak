@@ -26,8 +26,9 @@
             }
             ?>
             <li class="active-page">
-                <a href="<?= site_url('admin/layanan') ?>">
-                    <i class="menu-icon icon-list-numbered"></i><span>Layanan Antrian</span>
+            <li class="active-page">
+                <a href="<?= site_url('admin/loket') ?>">
+                    <i class="menu-icon icon-list-numbered"></i><span>Data Loket</span>
                 </a>
             </li>
             <li class="active-page">
@@ -35,11 +36,11 @@
                     <i class="menu-icon icon-bell"></i><span>Daftar Antrian</span>
                 </a>
             </li>
-            <li class="active-page">
-                <a href="<?= site_url('mesin') ?>">
+            <!-- <li class="active-page">
+                <a href="<?//= site_url('mesin') ?>">
                     <i class="menu-icon icon-bell"></i><span>Tampilan Mesin</span>
                 </a>
-            </li>
+            </li> -->
 
         </ul>
     </div>

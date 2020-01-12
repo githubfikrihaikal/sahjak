@@ -45,11 +45,13 @@ function goLogin() {
 				hiddenui += '   <input type="hidden" name="username" id="username" class="form-control" value="">';
 				hiddenui += '   <input type="hidden" name="role" id="role" class="form-control" value="">';
 				hiddenui += '   <input type="hidden" name="kodepj" id="kodepj" class="form-control" value="">';
+				hiddenui += '   <input type="hidden" name="namaloket" id="namaloket" class="form-control" value="">';
 				$("#login-form").append(hiddenui);
 				document.getElementById("userid").value = key;
 				document.getElementById("username").value = value.username;
 				document.getElementById("role").value = value.role;
 				document.getElementById("kodepj").value = value.kodepj;
+				document.getElementById("namaloket").value = value.namaloket;
 				document.getElementById("login-form").submit();
 
 				// $.ajax({

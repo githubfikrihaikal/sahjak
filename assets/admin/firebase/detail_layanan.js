@@ -14,10 +14,10 @@ var config = {
 
 firebase.initializeApp(config);
 url = window.location.pathname.split("/");
-id = url[4];
+id = '1';
 // Firebase Database Reference and the child
 const dbRef = firebase.database().ref();
-const usersRef = dbRef.child("lokasi/" + id + "/layanan");
+const usersRef = dbRef.child("lokasi/1/layanan");
 var red = true;
 if (red == true) {
 	read();
@@ -37,7 +37,7 @@ function read() {
 			no++;
 			content += "<td>" + val.id + "</td>";
 			content += "<td>" + val.nama + "</td>";
-			content += "<td>" + val.antri_total + "</td>";
+			// content += "<td>" + val.antri_total + "</td>";
 			content += "<td>" + val.panggil_antrian.nomor_antri + "</td>";
 			content +=
 				'<td> <button type="button" class="btn btn-success next" data-key="' +
@@ -48,9 +48,7 @@ function read() {
 				key +
 				'">Recall</button> <button type="button" class="btn btn-primary recallto" data-key="' +
 				key +
-				'">Recall To</button> <button type="button" class="btn btn-warning setpj" data-key="' +
-				key +
-				'">Atur PJ</button> </td>';
+				'">Recall To</button> </td>';
 			content += "</tr>";
 		});
 		document.getElementById("tablebody").innerHTML = "";
@@ -288,12 +286,12 @@ function checkSkip(e) {
 
 async function goTambah() {
 	const { value: formValues } = await Swal.fire({
-		title: "Tambah KPP",
+		title: "Tambah Layanan",
 		html:
 			'<input autocomplete="off" name="hidden" type="text" style="display:none;">' +
 			'<input id="swal-input1" class="swal2-input pegawai-input" data-key="id" placeholder="ID Antrian" autocomplete="off">' +
-			'<input id="swal-input2" class="swal2-input pegawai-input" data-key="nama" placeholder="Nama Loket" autocomplete="off">' +
-			'<input id="swal-input3" class="swal2-input pegawai-input" data-key="antri_total" placeholder="Total Antrian" autocomplete="off">',
+			'<input id="swal-input2" class="swal2-input pegawai-input" data-key="nama" placeholder="Nama Layanan" autocomplete="off">',
+		//	'<input id="swal-input3" class="swal2-input pegawai-input" data-key="antri_total" placeholder="Total Antrian" autocomplete="off">',
 		//   '<input id="swal-input1" class="swal2-input pegawai-input" data-key="role" placeholder="Role" autocomplete="off">',
 		focusConfirm: false,
 		showCancelButton: true,
@@ -304,7 +302,7 @@ async function goTambah() {
 
 	if (formValues) {
 		document.getElementById("tablebody").innerHTML = "";
-		const usersRef = dbRef.child("lokasi/" + id + "/layanan");
+		const usersRef = dbRef.child("lokasi/1/layanan");
 		const addUserInputsUI = document.getElementsByClassName("pegawai-input");
 		let newPegawai = {};
 		var empty = false;
@@ -332,7 +330,9 @@ async function goTambah() {
 
 pjdata = {};
 function readrecall(e) {
+	pjdata = {};
 	var id2 = e.target.getAttribute("data-key");
+	console.log(id2);
 	const skip = dbRef.child("lokasi/" + id + "/layanan/" + id2 + "/skipped");
 	skip.on("value", snap => {
 		snap.forEach(childSnap => {
