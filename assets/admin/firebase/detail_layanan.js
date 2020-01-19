@@ -48,7 +48,9 @@ function read() {
 				key +
 				'">Recall</button> <button type="button" class="btn btn-primary recallto" data-key="' +
 				key +
-				'">Recall To</button> </td>';
+				'">Recall To</button> <button type="button" class="btn btn-danger reset" data-key="' +
+				key +
+				'">Reset</button> </td>';
 			content += "</tr>";
 		});
 		document.getElementById("tablebody").innerHTML = "";
@@ -58,6 +60,7 @@ function read() {
 		$(".recall").on("click", goRecall);
 		$(".recallto").on("click", goRecallTo);
 		$(".setpj").on("click", setpj);
+		$(".reset").on("click", goReset);
 	});
 }
 function readpj(){
@@ -162,8 +165,6 @@ function goSkip(e) {
 						val = childSnap.val();
 					if (key == "antri_total") {
 						cek = val + 1;
-					} else {
-						next[key] = val;
 					}
 				});
 			});
@@ -229,8 +230,6 @@ function goRecall(e) {
 	});
 }
 
-function gorecallTo(e) {}
-
 function goNext(e) {
 	Swal.fire({
 		title: "Next?",
@@ -276,13 +275,10 @@ function Next(e) {
 				val = childSnap.val();
 			if (key == "antri_total") {
 				cek = val + 1;
-			} else {
-				next[key] = val;
 			}
 		});
 	});
 	if(cek<=now){
-		console.log("gagal")
 		Swal.fire("Gagal!", "Total antrian sudah mencapai batas", "error");
 		read();
 	}else{
@@ -447,4 +443,42 @@ async function goRecallTo(e) {
 		);
 		read();
 	}
+}
+
+function goReset(e) {
+	Swal.fire({
+		title: "Reset?",
+		text: "Data yang di reset tidak bisa dikembalikan",
+		icon: "warning",
+		confirmButtonColor: "#3085d6",
+		cancelButtonColor: "#d33",
+		confirmButtonText: "OK!"
+	}).then(result => {
+		if (result.value) {
+			reset(e);
+		}
+	});
+}
+
+function reset(e){
+	document.getElementById("tablebody").innerHTML = "";
+	var id2 = e.target.getAttribute("data-key");
+	const antrian = dbRef.child(
+		"lokasi/" + id + "/layanan/" + id2 + "/panggil_antrian"
+	);
+	var next = {};
+	antrian.on("value", snap => {
+		snap.forEach(childSnap => {
+			let key = childSnap.key,
+				val = childSnap.val();
+			if (key == "nomor_antri") {
+				next[key] = '0';
+			} else {
+				next[key] = val;
+			}
+		});
+	});
+	antrian.update(next);
+	Swal.fire("Sukses!", "Reset Sukses", "success");
+	read();
 }
