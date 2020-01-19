@@ -132,34 +132,75 @@ function goSkip(e) {
 		confirmButtonText: "OK!"
 	}).then(result => {
 		if (result.value) {
+					//cek total antrian
 			document.getElementById("tablebody").innerHTML = "";
 			var id2 = e.target.getAttribute("data-key");
-			const skip = dbRef.child("lokasi/" + id + "/layanan/" + id2 + "/skipped");
-			const skip_antrian = dbRef.child("lokasi/" + id + "/layanan/" + id2);
-			skipped = {};
-			index = 0;
-			skip.on("value", snap => {
+			const antrian = dbRef.child(
+				"lokasi/" + id + "/layanan/" + id2 + "/panggil_antrian"
+			);
+			const ceklayanan = dbRef.child(
+				"lokasi/" + id + "/layanan/" + id2
+			);
+			var next = {};
+			var now; // buat ambil antrian skrng
+			var cek; //buat ambil antriean maks 
+			antrian.on("value", snap => {
 				snap.forEach(childSnap => {
 					let key = childSnap.key,
 						val = childSnap.val();
-					skipped["skip" + index] = val;
-					index++;
-				});
-			});
-			skip_antrian.on("value", snap => {
-				snap.forEach(childSnap => {
-					let key = childSnap.key,
-						val = childSnap.val();
-					if (key == "panggil_antrian") {
-						skipped["skip" + index] = val.nomor_antri;
-						index++;
+					if (key == "nomor_antri") {
+						next[key] = val + 1;
+						now = val + 1;
+					} else {
+						next[key] = val;
 					}
 				});
 			});
-			//console.log(skipped);
-			skip.update(skipped);
-			read();
-			Next(e);
+			ceklayanan.on("value", snap => {
+				snap.forEach(childSnap => {
+					let key = childSnap.key,
+						val = childSnap.val();
+					if (key == "antri_total") {
+						cek = val + 1;
+					} else {
+						next[key] = val;
+					}
+				});
+			});
+			if(cek<=now){
+				console.log("gagal")
+				Swal.fire("Gagal!", "Total antrian sudah mencapai batas", "error");
+				read();
+			}else{
+				document.getElementById("tablebody").innerHTML = "";
+				var id2 = e.target.getAttribute("data-key");
+				const skip = dbRef.child("lokasi/" + id + "/layanan/" + id2 + "/skipped");
+				const skip_antrian = dbRef.child("lokasi/" + id + "/layanan/" + id2);
+				skipped = {};
+				index = 0;
+				skip.on("value", snap => {
+					snap.forEach(childSnap => {
+						let key = childSnap.key,
+							val = childSnap.val();
+						skipped["skip" + index] = val;
+						index++;
+					});
+				});
+				skip_antrian.on("value", snap => {
+					snap.forEach(childSnap => {
+						let key = childSnap.key,
+							val = childSnap.val();
+						if (key == "panggil_antrian") {
+							skipped["skip" + index] = val.nomor_antri;
+							index++;
+						}
+					});
+				});
+				//console.log(skipped);
+				skip.update(skipped);
+				read();
+				Next(e);
+			}
 		}
 	});
 }
