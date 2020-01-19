@@ -37,7 +37,7 @@ function read() {
 			no++;
 			content += "<td>" + val.id + "</td>";
 			content += "<td>" + val.nama + "</td>";
-			// content += "<td>" + val.antri_total + "</td>";
+			content += "<td>" + val.antri_total + "</td>";
 			content += "<td>" + val.panggil_antrian.nomor_antri + "</td>";
 			content +=
 				'<td> <button type="button" class="btn btn-success next" data-key="' +
@@ -321,6 +321,7 @@ async function goTambah() {
 		} else {
 			panggil_antrian = { nomor_antri: 1 };
 			newPegawai["panggil_antrian"] = panggil_antrian;
+			newPegawai["antri_total"] = 1;
 			usersRef.push(newPegawai);
 			Swal.fire("Berhasil!", "Berhasil menambah data", "success");
 			read();

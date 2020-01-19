@@ -149,7 +149,7 @@
                                                           <th scope="col">#</th>
                                                           <th scope="col">ID Antrian</th>
                                                           <th scope="col">Nama</th>
-                                                          <!-- <th scope="col">Total Antrian</th> -->
+                                                          <th scope="col">Total Antrian</th>
                                                           <th scope="col">Antrian Sekarang</th>
                                                           <th scope="col">Action</th>
                                                       </tr>
