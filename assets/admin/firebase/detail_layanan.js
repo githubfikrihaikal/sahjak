@@ -201,9 +201,6 @@ function goNext(e) {
 	}).then(result => {
 		if (result.value) {
 			Next(e);
-			panggilAntrian(e);
-			checkSkip(e);
-			read();
 		}
 	});
 }
@@ -214,20 +211,45 @@ function Next(e) {
 	const antrian = dbRef.child(
 		"lokasi/" + id + "/layanan/" + id2 + "/panggil_antrian"
 	);
+	const ceklayanan = dbRef.child(
+		"lokasi/" + id + "/layanan/" + id2
+	);
 	var next = {};
+	var now; // buat ambil antrian skrng
+	var cek; //buat ambil antriean maks 
 	antrian.on("value", snap => {
 		snap.forEach(childSnap => {
 			let key = childSnap.key,
 				val = childSnap.val();
 			if (key == "nomor_antri") {
 				next[key] = val + 1;
+				now = val + 1;
 			} else {
 				next[key] = val;
 			}
 		});
 	});
-	antrian.update(next);
-	read();
+	ceklayanan.on("value", snap => {
+		snap.forEach(childSnap => {
+			let key = childSnap.key,
+				val = childSnap.val();
+			if (key == "antri_total") {
+				cek = val + 1;
+			} else {
+				next[key] = val;
+			}
+		});
+	});
+	if(cek<=now){
+		console.log("gagal")
+		Swal.fire("Gagal!", "Total antrian sudah mencapai batas", "error");
+		read();
+	}else{
+		antrian.update(next);
+		panggilAntrian(e);
+		checkSkip(e);
+		read();
+	}
 }
 
 function panggilAntrian(e) {
